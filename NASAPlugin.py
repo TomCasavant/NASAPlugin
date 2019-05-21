@@ -6,6 +6,7 @@ import os
 class NASAPlugin(IPlugin):
     def process(self, msg, client):
         if ("!space" in msg['text']):
+            print("here")
             response = urlopen(f"https://api.nasa.gov/planetary/apod?api_key={os.getenv("NASA_API_KEY")}")
             js = json.load(response)
             response = f"{js['title']} {js['url']}"
